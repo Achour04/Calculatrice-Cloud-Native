@@ -1,29 +1,40 @@
-let display = document.getElementById("display");
+document.addEventListener("DOMContentLoaded", function () {
+    const operationForm = document.getElementById('operation-form');
+    const resultForm = document.getElementById('result-form');
 
-function appendNumber(number) {
-    if (display.innerText === "0") {
-        display.innerText = number;
-    } else {
-        display.innerText += number;
-    }
-}
+    // Envoyer une opération
+    operationForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-function appendOperator(operator) {
-    const lastChar = display.innerText.slice(-1);
-    if (["+", "-", "*", "/"].includes(lastChar)) {
-        return; // Prevent multiple operators in a row
-    }
-    display.innerText += operator;
-}
+        const operation = document.getElementById('operation').value;
+        const operand1 = document.getElementById('operand1').value;
+        const operand2 = document.getElementById('operand2').value;
 
-function clearDisplay() {
-    display.innerText = "0";
-}
+        const response = await fetch('http://127.0.0.1:5000/api/calculate', {  // URL mise à jour
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ num1: Number(operand1), num2: Number(operand2), operator: operation })
+        });
 
-function calculate() {
-    try {
-        display.innerText = eval(display.innerText);
-    } catch (error) {
-        display.innerText = "Erreur";
-    }
-}
+        const result = await response.json();
+        document.getElementById('operation-result').innerText = `ID généré : ${result.id}`;
+    });
+
+    // Récupérer un résultat
+    resultForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const operationId = document.getElementById('operation-id').value;
+
+        const response = await fetch(`http://127.0.0.1:5000/api/result/${operationId}`, {  // URL mise à jour
+            method: 'GET',
+        });
+        const result = await response.json();
+
+        if (result.error) {
+            document.getElementById('result-output').innerText = `Erreur : ${result.error}`;
+        } else {
+            document.getElementById('result-output').innerText = `Résultat : ${result.result}`;
+        }
+    });
+});
