@@ -3,10 +3,8 @@ variable "project_name" {
   default     = "calculatrice"
 }
 
-variable "binome_names" {
-  description = "Names for DNS entries"
-  type = object({
-    nom1 = string
-    nom2 = string
-  })
+variable "student_name" {
+  description = "Student full name"
+  default     = "othmane-achour"
+}
 }
