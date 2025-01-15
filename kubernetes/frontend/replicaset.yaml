@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ${REGISTRY}/frontend:latest
+        image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/frontend-ao-2024:othmane-achour
         env:
         - name: API_URL
           value: "http://svc-api"

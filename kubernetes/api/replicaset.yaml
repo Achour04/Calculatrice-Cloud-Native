@@ -14,8 +14,8 @@ spec:
         app: api
     spec:
       containers:
-      - name: api
-        image: ${REGISTRY}/api:latest
+      - name: api-container
+        image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/backend-ao-2024:othmane-achour
         env:
         - name: RABBITMQ_HOST
           value: "svc-rabbitmq"
