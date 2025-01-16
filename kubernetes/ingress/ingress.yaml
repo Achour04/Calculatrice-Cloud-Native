@@ -4,6 +4,7 @@ metadata:
   name: calculatrice-ingress
   namespace: othmane-achour
 spec:
+  ingressClassName: nginx
   rules:
   - host: calculatrice-othmane-achour-polytech-dijon.kiowy.net
     http:

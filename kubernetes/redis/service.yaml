@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: svc-redis
-  namespace: nombinome1-nombinome2
+  namespace: othmane-achour
 spec:
   selector:
     app: redis

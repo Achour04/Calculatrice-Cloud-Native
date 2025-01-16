@@ -3,7 +3,8 @@ kind: ReplicaSet
 metadata:
   name: pod-consumer
   namespace: othmane-achour
-  replicas: 2
+spec:
+  replicas: 2  # Le champ replicas doit être sous spec
   selector:
     matchLabels:
       app: consumer

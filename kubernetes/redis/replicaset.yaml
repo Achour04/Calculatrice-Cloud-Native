@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: redis-pod
-  namespace: nombinome1-nombinome2
+  namespace: othmane-achour
 spec:
   replicas: 1
   selector:
