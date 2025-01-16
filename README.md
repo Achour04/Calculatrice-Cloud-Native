@@ -139,11 +139,13 @@ Aucun problème majeur rencontré dans cette partie.
 ### Pré-requis :
 1. Installer **kubectl** et configurer l’accès à un cluster Kubernetes.
 2. Cloner le projet et naviguer dans le répertoire `kubernetes`.
-<img width="626" alt="Capture d’écran 2025-01-16 15085733333333333" src="https://github.com/user-attachments/assets/21cb7f5c-0721-4f51-8de3-729b5baf5b9e" />
 
 
 ### Déploiement :
 1. Appliquer les fichiers de namespace :
    ```bash
    kubectl apply -f namespace.yaml
+### Résultats final : 
+
+<img width="626" alt="Capture d’écran 2025-01-16 15085733333333333" src="https://github.com/user-attachments/assets/21cb7f5c-0721-4f51-8de3-729b5baf5b9e" />
    
