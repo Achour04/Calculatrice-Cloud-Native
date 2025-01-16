@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-rabbitmq
+  name: rabbitmq
   namespace: othmane-achour
 spec:
   selector:

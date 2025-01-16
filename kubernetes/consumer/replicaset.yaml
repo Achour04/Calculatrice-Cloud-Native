@@ -4,7 +4,7 @@ metadata:
   name: pod-consumer
   namespace: othmane-achour
 spec:
-  replicas: 2  # Le champ replicas doit être sous spec
+  replicas: 1
   selector:
     matchLabels:
       app: consumer
@@ -18,6 +18,6 @@ spec:
         image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/consumer-ao-2024:othmane-achour
         env:
         - name: RABBITMQ_HOST
-          value: "svc-rabbitmq"
+          value: "rabbitmq"
         - name: REDIS_HOST
-          value: "svc-redis"
+          value: "redis-service"
