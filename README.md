@@ -1,11 +1,67 @@
-# Projet Calculatrice Cloud Native
+# Calculatrice Cloud Native
 
-Bienvenue dans le projet **Calculatrice Cloud Native** ! Ce projet a pour objectif de concevoir et déployer une application cloud-native capable de gérer des opérations mathématiques simples, tout en explorant les concepts de virtualisation, de conteneurisation et d'orchestration dans Kubernetes.
-
-## Auteur
-**Othmane Achour** (monome)
+Bienvenue dans le projet **Calculatrice Cloud Native** ! Ce projet s'inscrit dans le cadre du module **Virtualisation & Cloud Computing** de Polytech Dijon. Il met en œuvre les compétences liées à la virtualisation, la conteneurisation, l'orchestration et les bonnes pratiques cloud-native pour développer et déployer une application cloud-native fonctionnelle.
 
 ---
+
+## Auteur
+**Nom complet : Othmane Achour**
+
+---
+
+## Objectif du Projet
+Créer une application de calculatrice hébergée sur le cloud, respectant les principes cloud-native et utilisant une architecture basée sur des microservices. L'application devra permettre :
+- D'effectuer des calculs (addition, soustraction, multiplication, division) via une API RESTful.
+- De stocker les résultats de manière persistante avec Redis.
+- D'utiliser une file d'attente RabbitMQ pour traiter les calculs de manière asynchrone.
+- D'interagir avec une interface utilisateur (frontend).
+- De déployer et gérer les ressources à l'aide de Kubernetes et Terraform.
+
+---
+
+## Structure du Projet
+
+Le projet est organisé en trois parties principales :
+
+1. **Fondation** : Définition et provisionnement de l'infrastructure cloud avec Terraform.
+2. **Application** : Développement des microservices (frontend, backend, consumer) et gestion des conteneurs Docker.
+3. **Kubernetes** : Déploiement des services dans un cluster Kubernetes.
+
+Chaque partie est contenue dans des dossiers spécifiques :
+- **foundation/** : Contient les fichiers Terraform pour la gestion de l'infrastructure.
+- **application/** : Contient le code source des services et les Dockerfiles.
+- **kubernetes/** : Contient les fichiers YAML pour déployer les services dans Kubernetes.
+
+---
+
+## Fonctionnalités de l'Application
+
+1. **Calculs via une API REST** :
+   - **POST** : Envoyer une opération à effectuer.
+   - **GET** : Récupérer le résultat d'un calcul à partir d'un identifiant.
+
+2. **Persistance des données** :
+   - Utilisation de **Redis** pour stocker les résultats.
+
+3. **Traitement asynchrone** :
+   - Les calculs sont placés dans une file d'attente **RabbitMQ**, puis consommés et exécutés par un service spécifique (consumer).
+
+4. **Interface Utilisateur** :
+   - Un **frontend** permet aux utilisateurs d'envoyer des calculs et de consulter les résultats.
+
+---
+
+## Étapes du Développement
+
+### 1. Fondation (Infrastructure as Code - Terraform)
+La fondation est définie via Terraform en utilisant le provider **Scaleway** (cloud français). Les ressources suivantes sont provisionnées :
+- Un registre de conteneurs pour stocker les images Docker.
+- Un cluster Kubernetes pour déployer les services.
+- Une base de données Redis pour stocker les résultats.
+- Deux LoadBalancers (développement et production).
+- Des entrées DNS pour résoudre les IP des LoadBalancers.
+
+
 
 ## Description du Projet
 
@@ -52,6 +108,7 @@ Aucun problème majeur rencontré dans cette partie.
 3. **Ingress** pour gérer les routes HTTP et exposer l’application sur Internet.
 
 ### Problèmes Rencontrés :
+- recupération de l'ID de la base de donnée Redis
 - Initialement, un Ingress de classe **GCE** a été utilisé par erreur, ce qui causait des dysfonctionnements. Le problème a été corrigé en passant à un Ingress de classe **NGINX**.
 
 ### Configuration et Application :
